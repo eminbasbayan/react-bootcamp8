@@ -1,6 +1,12 @@
+const productCardCss = {
+  backgroundColor: 'black',
+  color: 'red',
+  textAlign: "end"
+};
+
 function ProductCard() {
   return (
-    <div className="product-card">
+    <div className="product-card" style={productCardCss}>
       <img
         className="product-image"
         src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
