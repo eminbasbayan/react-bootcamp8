@@ -1,0 +1,14 @@
+.product-card {
+    border: 1px solid #eee;
+    width: 200px;
+}
+
+.product-image {
+    width: 100%;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}

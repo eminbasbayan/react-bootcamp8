@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="container">
      <ProductCard />
+     <ProductCard />
     </div>
   );
 }
