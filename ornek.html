@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="">Emin Başbayan</h1>
+    <button id="myBtn" onclick="">İsmi Değiştir</button>
+
+    <script>
+      const newName = 'Ahmet Demir';
+
+      const btn = document.getElementById('myBtn');
+      const hTag = document.querySelector('h1');
+
+      btn.addEventListener('click', changeName);
+
+      function changeName() {
+        hTag.textContent = newName;
+      }
+    </script>
+  </body>
+</html>
