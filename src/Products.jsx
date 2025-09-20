@@ -4,6 +4,9 @@ import './Products.css';
 
 function Products() {
 
+  console.log("hello");
+  
+
   return (
     <div className="products">
       <h2>Products Component</h2>
