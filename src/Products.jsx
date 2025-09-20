@@ -7,7 +7,7 @@ function Products() {
       <h2>Products Component</h2>
 
       <div className="products-wrapper">
-        <ProductCard />
+        <ProductCard fullName="Emin Başbayan" courseName="React"  />
       </div>
     </div>
   );
