@@ -1,4 +1,5 @@
 import ProductCard from './ProductCard';
+import productsData, { products, customers } from './data/productsData';
 import './Products.css';
 
 function Products() {
@@ -8,16 +9,16 @@ function Products() {
 
       <div className="products-wrapper">
         <ProductCard
-          image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
-          title="Çanta"
-          price={1000}
-          description="Slim-fitting style, contrast raglan long sleeve, three-button henley placket"
+          image={productsData[0].image}
+          title={productsData[0].title}
+          price={productsData[0].price}
+          description={productsData[0].description}
         />
         <ProductCard
-          image="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png"
-          title="Kazak"
-          price="5000"
-          description={"Slim-fitting style, contrast raglan long sleeve, three-button henley placket"}
+          image={productsData[1].image}
+          title={productsData[1].title}
+          price={productsData[1].price}
+          description={productsData[1].description}
         />
       </div>
     </div>
