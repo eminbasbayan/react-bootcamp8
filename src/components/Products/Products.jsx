@@ -1,12 +1,8 @@
 import ProductCard from './ProductCard';
-import productsData from './data/productsData';
+import productsData from '../../data/productsData';
 import './Products.css';
 
 function Products() {
-
-  console.log("hello");
-  
-
   return (
     <div className="products">
       <h2>Products Component</h2>
