@@ -1,0 +1,8 @@
+.products{
+    padding: 20px;
+}
+
+.products-wrapper{
+    display: flex;
+    column-gap: 20px;
+}
