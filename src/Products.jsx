@@ -8,8 +8,6 @@ function Products() {
 
       <div className="products-wrapper">
         <ProductCard />
-        <ProductCard />
-        <ProductCard />
       </div>
     </div>
   );
