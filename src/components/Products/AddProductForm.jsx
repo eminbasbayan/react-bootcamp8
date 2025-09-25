@@ -3,60 +3,52 @@ import Button from '../UI/Button';
 import './AddProductForm.css';
 
 function AddProductForm() {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
-  const [description, setDescription] = useState('');
+  const [product, setProduct] = useState({
+    title: '',
+    price: '',
+    image: '',
+    description: '',
+  });
 
-
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
-  }
-
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
-  }
-
-  function handleImageChange(event) {
-    setImage(event.target.value);
-  }
-
-  function handleDescriptionChange(event) {
-    setDescription(event.target.value);
+  function handleChange({ target: { name, value } }) {
+    setProduct({ ...product, [name]: value });
   }
 
   return (
     <form className="add-product-form">
-      {title}
       <label>
-        Title: {title}
+        Title: {product.title}
         <input
           type="text"
-          onChange={handleTitleChange}
+          onChange={handleChange}
+          name="title"
           placeholder="Bir ürün ismi giriniz!"
         />
       </label>
       <label>
-        Price: {price}
+        Price: {product.price}
         <input
           type="number"
-          onChange={handlePriceChange}
+          onChange={handleChange}
+          name="price"
           placeholder="Bir ürün fiyatı giriniz!"
         />
       </label>
       <label>
-        Image URL: {image}
+        Image URL: {product.image}
         <input
           type="text"
-          onChange={handleImageChange}
+          onChange={handleChange}
+          name="image"
           placeholder="Bir ürün görseli giriniz!"
         />
       </label>
       <label>
-        Description: {description}
+        Description: {product.description}
         <input
           type="text"
-          onChange={handleDescriptionChange}
+          onChange={handleChange}
+          name="description"
           placeholder="Bir ürün açıklaması giriniz!"
         />
       </label>
