@@ -4,16 +4,7 @@ import Button from './components/UI/Button';
 function App() {
   return (
     <div className="container">
-      <Button type="primary" size="sm" title="Sepete Ekle" />
-      <Button type="danger" title="Ürünü Sil" />
-      <Button type="secondary" size="lg" title="Veriyi Getir!" />
-
-      <Button type="primary" size="sm" title="Formu Gönder" />
-      <Button type="secondary" size="lg">
-        <strong>props.children button</strong>
-      </Button>
-      <button>Sepete Ekle</button>
-      {/* <Products /> */}
+      <Products /> 
     </div>
   );
 }
