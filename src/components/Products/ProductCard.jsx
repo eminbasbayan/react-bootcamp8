@@ -1,9 +1,8 @@
 import './ProductCard.css';
 
 function ProductCard(props) {
-
-  function handleTitleChange(){
-    props.setTitleState("Title Değişti!")
+  function handleTitleChange(title) {
+    props.setTitleState(title);
   }
 
   return (
@@ -13,12 +12,12 @@ function ProductCard(props) {
       <div className="product-info">
         <strong className="product-title">{props.titleState}</strong>
         <span className="product-price">{props.price}₺</span>
-        <p className='product-description'>{props.description}</p>
+        <p className="product-description">{props.description}</p>
 
-        <button onClick={handleTitleChange}>Title'ı Değiştir!</button>
+        <button onClick={() => handleTitleChange('Title Değişti')}>
+          Title'ı Değiştir!
+        </button>
       </div>
-
-      
     </div>
   );
 }
