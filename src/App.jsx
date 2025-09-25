@@ -9,6 +9,10 @@ function App() {
       <Button type="secondary" size="lg" title="Veriyi Getir!" />
 
       <Button type="primary" size="sm" title="Formu Gönder" />
+      <Button type="secondary" size="lg">
+        <strong>props.children button</strong>
+      </Button>
+      <button>Sepete Ekle</button>
       {/* <Products /> */}
     </div>
   );
