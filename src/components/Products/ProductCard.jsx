@@ -8,7 +8,7 @@ function ProductCard(props) {
       <div className="product-info">
         <strong className="product-title">{props.title}</strong>
         <span className="product-price">{props.price}₺</span>
-        <p>{props.description}</p>
+        <p className='product-description'>{props.description}</p>
       </div>
     </div>
   );

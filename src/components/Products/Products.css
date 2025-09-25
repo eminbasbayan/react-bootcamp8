@@ -1,9 +1,9 @@
-.products{
-    padding: 20px;
+.products {
+  padding: 20px;
 }
 
-.products-wrapper{
-    display: flex;
-    column-gap: 20px;
-    flex-wrap: wrap;
+.products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
