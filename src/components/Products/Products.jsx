@@ -12,6 +12,15 @@ function Products() {
     setProducts([newProduct, ...products]);
   }
 
+  function handleDeleteProduct(productId) {
+    const filteredProducts = products.filter(
+      (product) => product.id !== productId
+    );
+    console.log('products: ', products);
+    console.log('filteredProducts: ', filteredProducts);
+    setProducts(filteredProducts);
+  }
+
   return (
     <div className="products">
       <h2>Add Product Component</h2>
@@ -28,8 +37,10 @@ function Products() {
               price={product.price}
               description={product.description}
               category={product.category}
+              id={product.id}
               titleState={titleState}
               setTitleState={setTitleState}
+              onDeleteProduct={handleDeleteProduct}
             />
           );
         })}
