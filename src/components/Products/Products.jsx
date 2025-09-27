@@ -15,9 +15,7 @@ function Products() {
   return (
     <div className="products">
       <h2>Add Product Component</h2>
-      <AddProductForm
-        addNewProduct={addNewProduct}
-      />
+      <AddProductForm addNewProduct={addNewProduct} />
 
       <h2>Products Component</h2>
       <div className="products-wrapper">
@@ -29,6 +27,7 @@ function Products() {
               title={product.title}
               price={product.price}
               description={product.description}
+              category={product.category}
               titleState={titleState}
               setTitleState={setTitleState}
             />
