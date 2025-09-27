@@ -41,12 +41,25 @@ function AddProductForm({ addNewProduct }) {
     };
 
     addNewProduct(newProduct);
+
+    setProduct({
+      title: '',
+      price: '',
+      image: '',
+      description: '',
+      category: '',
+    });
   }
 
   return (
     <form className="add-product-form" onSubmit={handleSubmit}>
       {productInputs.map((input) => (
-        <ProductInput key={input.name} handleChange={handleChange} {...input} />
+        <ProductInput
+          key={input.name}
+          handleChange={handleChange}
+          value={product[input.name]}
+          {...input}
+        />
       ))}
 
       <Button type="primary">Ürünü Ekle</Button>
