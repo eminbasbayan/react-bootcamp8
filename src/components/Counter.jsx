@@ -1,28 +1,39 @@
-// React projelerinde ekranda değişiklik görmek istiyorsak ekrandaki değer bir STATE'e bağlı olması gerekiyor!!!
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Counter() {
   const [state, setState] = useState(0);
-  // let count = 0;
+  const [fullName, setFullName] = useState('Boş');
+
+  console.log('render oldu!');
 
   function arttir() {
-    // count = count + 1;
     setState(state + 1);
   }
 
   function azalt() {
-    // count = count + 1;
     setState(state - 1);
   }
 
-  console.log('component render edildi!');
+  useEffect(() => {
+    console.log('component sadece ilk yüklendiği çalışır!');
+  }, []);
+
+  useEffect(() => {
+    console.log(
+      "component ilk yüklendiğinde ve depen. arr'e yazılan değerlere göre çalışır!"
+    );
+  }, [fullName, state]);
 
   return (
     <div className="counter">
       <button onClick={arttir}>+</button>
       <span>{state}</span>
       <button onClick={azalt}>-</button>
+
+      <p>{fullName}</p>
+      <button onClick={() => setFullName('Emin Başbayan')}>
+        İsmi Değiştir
+      </button>
     </div>
   );
 }
