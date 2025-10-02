@@ -4,8 +4,8 @@ import Products from './components/Products/Products';
 function App() {
   return (
     <div className="container">
-      {/* <Products />  */}
-      <Counter />
+      <Products /> 
+      {/* <Counter /> */}
     </div>
   );
 }
