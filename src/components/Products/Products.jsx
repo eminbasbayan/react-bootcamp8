@@ -3,10 +3,12 @@ import productsData from '../../data/productsData';
 import './Products.css';
 import { useState } from 'react';
 import AddProductForm from './AddProductForm';
+import Modal from '../UI/Modal';
 
 function Products() {
   const [titleState, setTitleState] = useState('Title');
   const [products, setProducts] = useState(productsData);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   function addNewProduct(newProduct) {
     setProducts([newProduct, ...products]);
@@ -24,7 +26,10 @@ function Products() {
   return (
     <div className="products">
       <h2>Add Product Component</h2>
-      <AddProductForm addNewProduct={addNewProduct} />
+      <AddProductForm
+        addNewProduct={addNewProduct}
+        setIsShowModal={setIsShowModal}
+      />
 
       <h2>Products Component</h2>
       <div className="products-wrapper">
@@ -45,6 +50,10 @@ function Products() {
           );
         })}
       </div>
+
+      {isShowModal && (
+        <Modal title="Form Hatası" description="Inputlar boş olamaz!" setIsShowModal={setIsShowModal} />
+      )}
     </div>
   );
 }

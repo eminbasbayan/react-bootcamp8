@@ -5,7 +5,7 @@ import ProductInput from './ProductInput';
 import productInputs from '../../data/productInputs';
 import './AddProductForm.css';
 
-function AddProductForm({ addNewProduct }) {
+function AddProductForm({ addNewProduct, setIsShowModal }) {
   const [product, setProduct] = useState({
     title: '',
     price: '',
@@ -21,16 +21,12 @@ function AddProductForm({ addNewProduct }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(Object.keys(product));
-    console.log(Object.values(product));
-    console.log(Object.entries(product));
-
     const isFormValid = Object.values(product).every(
       (value) => value.trim() !== ''
     );
 
     if (!isFormValid) {
-      alert('Inputlar boş bırakılamaz!');
+      setIsShowModal(true);
       return;
     }
 
