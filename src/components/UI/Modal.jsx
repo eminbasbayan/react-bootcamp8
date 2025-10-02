@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { CircleX } from 'lucide-react';
 import './Modal.css';
 
@@ -10,7 +11,7 @@ const Modal = ({
     setIsShowModal(false);
   }
 
-  return (
+  return createPortal(
     <div class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -36,7 +37,8 @@ const Modal = ({
         </div>
       </div>
       <div className="modal-overlay" onClick={handleClose}></div>
-    </div>
+    </div>,
+    document.getElementById('portal')
   );
 };
 
