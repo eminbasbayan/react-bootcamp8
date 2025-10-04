@@ -1,15 +1,15 @@
-import ProductCard from './ProductCard';
-import productsData from '../../data/productsData';
-import './Products.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
+
 import AddProductForm from './AddProductForm';
+import ProductCard from './ProductCard';
 import Modal from '../UI/Modal';
+import { initialState, reducerFunction } from './productReducer';
+import './Products.css';
+
+
 
 function Products() {
-  const [titleState, setTitleState] = useState('Title');
-  const [products, setProducts] = useState([]);
-  const [isShowModal, setIsShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [state, dispatch] = useReducer(reducerFunction, initialState);
 
   useEffect(() => {
     getProducts();
@@ -18,38 +18,27 @@ function Products() {
   function getProducts() {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data) => dispatch({ type: 'GET_PRODUCTS', products: data }))
       .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));
-  }
-
-  function addNewProduct(newProduct) {
-    setProducts([newProduct, ...products]);
-  }
-
-  function handleDeleteProduct(productId) {
-    const filteredProducts = products.filter(
-      (product) => product.id !== productId
-    );
-    console.log('products: ', products);
-    console.log('filteredProducts: ', filteredProducts);
-    setProducts(filteredProducts);
+      .finally(() => dispatch({ type: 'CLOSE_LOADING' }));
   }
 
   return (
     <div className="products">
       <h2>Add Product Component</h2>
       <AddProductForm
-        addNewProduct={addNewProduct}
-        setIsShowModal={setIsShowModal}
+        addNewProduct={(newProduct) =>
+          dispatch({ type: 'ADD_NEW_PRODUCT', newProduct })
+        }
+        setIsShowModal={() => dispatch({ type: 'OPEN_MODAL' })}
       />
 
       <button onClick={getProducts}>Ürünleri Getir!</button>
 
       <h2>Products Component</h2>
       <div className="products-wrapper">
-        {isLoading && <h2>Loading...</h2>}
-        {products.map((product) => {
+        {state.isLoading && <h2>Loading...</h2>}
+        {state.products.map((product) => {
           return (
             <ProductCard
               key={product.id}
@@ -59,19 +48,19 @@ function Products() {
               description={product.description}
               category={product.category}
               id={product.id}
-              titleState={titleState}
-              setTitleState={setTitleState}
-              onDeleteProduct={handleDeleteProduct}
+              onDeleteProduct={(productId) =>
+                dispatch({ type: 'DELETE_PRODUCT', productId })
+              }
             />
           );
         })}
       </div>
 
-      {isShowModal && (
+      {state.isShowModal && (
         <Modal
           title="Form Hatası"
           description="Inputlar boş olamaz!"
-          setIsShowModal={setIsShowModal}
+          setIsShowModal={() => dispatch({ type: 'CLOSE_MODAL' })}
         />
       )}
     </div>
