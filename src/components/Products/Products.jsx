@@ -1,14 +1,26 @@
 import ProductCard from './ProductCard';
 import productsData from '../../data/productsData';
 import './Products.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddProductForm from './AddProductForm';
 import Modal from '../UI/Modal';
 
 function Products() {
   const [titleState, setTitleState] = useState('Title');
-  const [products, setProducts] = useState(productsData);
+  const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  function getProducts() {
+    fetch('https://fakestoreapi.com/products')
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }
 
   function addNewProduct(newProduct) {
     setProducts([newProduct, ...products]);
@@ -31,6 +43,8 @@ function Products() {
         setIsShowModal={setIsShowModal}
       />
 
+      <button onClick={getProducts}>Ürünleri Getir!</button>
+
       <h2>Products Component</h2>
       <div className="products-wrapper">
         {products.map((product) => {
@@ -52,7 +66,11 @@ function Products() {
       </div>
 
       {isShowModal && (
-        <Modal title="Form Hatası" description="Inputlar boş olamaz!" setIsShowModal={setIsShowModal} />
+        <Modal
+          title="Form Hatası"
+          description="Inputlar boş olamaz!"
+          setIsShowModal={setIsShowModal}
+        />
       )}
     </div>
   );
