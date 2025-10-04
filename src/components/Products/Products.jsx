@@ -9,17 +9,18 @@ function Products() {
   const [titleState, setTitleState] = useState('Title');
   const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    getProducts();
   }, []);
 
   function getProducts() {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data))
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }
 
   function addNewProduct(newProduct) {
@@ -47,6 +48,7 @@ function Products() {
 
       <h2>Products Component</h2>
       <div className="products-wrapper">
+        {isLoading && <h2>Loading...</h2>}
         {products.map((product) => {
           return (
             <ProductCard
