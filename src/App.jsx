@@ -1,15 +1,24 @@
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
-import Counter from './components/Counter';
-import Products from './components/Products/Products';
+import { createBrowserRouter } from 'react-router';
+import { RouterProvider } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import ProductsPage from './pages/ProductsPage';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: HomePage,
+  },
+  {
+    path: '/products',
+    Component: ProductsPage,
+  },
+]);
 
 function App() {
   return (
     <div className="container mx-auto">
-      <Login />
-      <Register />
-      {/* <Products />  */}
-      {/* <Counter /> */}
+      <RouterProvider router={router} />
     </div>
   );
 }
