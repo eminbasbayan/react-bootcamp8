@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0">
       <div className="container mx-auto flex justify-between items-center px-4">
@@ -27,7 +29,10 @@ const Header = () => {
 
         {/* Sepet Butonu */}
         <div className="relative">
-          <button className="flex items-center space-x-2 bg-teal-500 hover:bg-teal-600 text-white py-2 px-4 rounded-lg">
+          <button
+            className="flex items-center space-x-2 bg-teal-500 hover:bg-teal-600 text-white py-2 px-4 rounded-lg"
+            onClick={() => navigate('/cart')}
+          >
             <span>Sepet</span>
             <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
               0
