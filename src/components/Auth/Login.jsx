@@ -1,21 +1,33 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+
+const schema = yup.object({
+  email: yup
+    .string()
+    .email('Geçerli bir e-posta girin!')
+    .required('E-mail zorunlu!'),
+  password: yup
+    .string()
+    .min(6, 'Şifre en az 6 karakter olmalı!')
+    .max(12, 'Şifre en fazla 12 karakter olmalı!')
+    .required('Şifre zorunlu!'),
+});
 
 const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => console.log(data);
-
-  console.log(watch("email"));
-  console.log(watch("password"));
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   console.log(errors);
   
-  
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <div className="w-full bg-white rounded-2xl shadow-lg p-8">
@@ -29,8 +41,13 @@ const Login = () => {
             type="email"
             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             placeholder="ornek@mail.com"
-            {...register('email', {required: true})}
+            {...register('email')}
           />
+          {errors?.email && (
+            <strong className="text-red-500 text-sm">
+              {errors.email?.message}
+            </strong>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-1">
@@ -42,6 +59,11 @@ const Login = () => {
             placeholder="••••••••"
             {...register('password')}
           />
+          {errors?.password && (
+            <strong className="text-red-500 text-sm">
+              {errors.password?.message}
+            </strong>
+          )}
         </div>
         <button
           type="submit"
