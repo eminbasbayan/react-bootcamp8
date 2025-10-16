@@ -3,6 +3,7 @@ import { RouterProvider } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
+import Header from './components/Layout/Header';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="container mx-auto">
+      <Header />
       <RouterProvider router={router} />
     </div>
   );
