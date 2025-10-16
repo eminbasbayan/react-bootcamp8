@@ -1,10 +1,26 @@
-import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+
+  console.log(watch("email"));
+  console.log(watch("password"));
+
+  console.log(errors);
+  
+  
+
   return (
     <div className="w-full bg-white rounded-2xl shadow-lg p-8">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Giriş Yap</h2>
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-1">
             Email
@@ -13,6 +29,7 @@ const Login = () => {
             type="email"
             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             placeholder="ornek@mail.com"
+            {...register('email', {required: true})}
           />
         </div>
         <div>
@@ -23,6 +40,7 @@ const Login = () => {
             type="password"
             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             placeholder="••••••••"
+            {...register('password')}
           />
         </div>
         <button
