@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   return (
-    <header className="bg-gray-800 text-white shadow-md py-4">
+    <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0">
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Logo */}
         <div className="text-xl font-semibold">
@@ -9,18 +11,18 @@ const Header = () => {
 
         {/* Navigation Menüsü */}
         <nav className="space-x-6">
-          <a href="/" className="hover:text-teal-400">
+          <Link to="/" className="hover:text-teal-400">
             Home
-          </a>
-          <a href="/products" className="hover:text-teal-400">
+          </Link>
+          <Link to="/products" className="hover:text-teal-400">
             Products
-          </a>
-          <a href="/about" className="hover:text-teal-400">
+          </Link>
+          <Link to="/about" className="hover:text-teal-400">
             About
-          </a>
-          <a href="/contact" className="hover:text-teal-400">
+          </Link>
+          <Link to="/contact" className="hover:text-teal-400">
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* Sepet Butonu */}
@@ -31,7 +33,6 @@ const Header = () => {
               0
             </span>
           </button>
-
         </div>
       </div>
     </header>
