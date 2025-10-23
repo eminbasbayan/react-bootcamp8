@@ -1,14 +1,20 @@
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 const Header = () => {
   const navigate = useNavigate();
+  const value = useContext(CartContext);
+
+  console.log("value:", value.fullName);
+  
 
   return (
     <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0">
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Logo */}
         <div className="text-xl font-semibold">
-          <span className="text-teal-400">Shop</span>Logo
+          <span className="text-teal-400">{value.fullName}</span>Logo
         </div>
 
         {/* Navigation Menüsü */}

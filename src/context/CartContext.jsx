@@ -1,13 +1,19 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
-const CartContext = createContext();
-
+export const CartContext = createContext();
 
 const CartProvider = (props) => {
+  const fullName = 'Emin Başbayan';
 
-    return (
-        <CartContext.Provider value={{}}>{props.children}</CartContext.Provider>
-    )
-}
+  return (
+    <CartContext.Provider
+      value={{
+        fullName,
+      }}
+    >
+      {props.children}
+    </CartContext.Provider>
+  );
+};
 
-export default CartProvider
+export default CartProvider;
