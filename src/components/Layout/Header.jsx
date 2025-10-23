@@ -6,7 +6,6 @@ const Header = () => {
   const navigate = useNavigate();
   const value = useContext(CartContext);
 
-  console.log("value:", value.fullName);
   
 
   return (
@@ -14,7 +13,7 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Logo */}
         <div className="text-xl font-semibold">
-          <span className="text-teal-400">{value.fullName}</span>Logo
+          <span className="text-teal-400">Shop</span>Logo
         </div>
 
         {/* Navigation Menüsü */}
@@ -41,7 +40,7 @@ const Header = () => {
           >
             <span>Sepet</span>
             <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
-              0
+              {value.cartItems.length}
             </span>
           </button>
         </div>

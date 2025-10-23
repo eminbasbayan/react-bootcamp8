@@ -1,5 +1,4 @@
 function reducerFunction(state, action) {
-  console.log(action.type);
   switch (action.type) {
     case 'GET_PRODUCTS':
       return { ...state, products: action.products };
