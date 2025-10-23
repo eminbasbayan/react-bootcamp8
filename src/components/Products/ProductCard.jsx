@@ -14,7 +14,10 @@ function ProductCard(props) {
         <span className="product-category">{category}</span>
         <p className="product-description">{description}</p>
 
-        <Button type="danger" onClick={()=> onDeleteProduct(id)}>
+        <Button type="success" onClick={() => {}} addClass="mb-2">
+          Sepete Ekle
+        </Button>
+        <Button type="danger" onClick={() => onDeleteProduct(id)}>
           Ürünü Sil
         </Button>
       </div>
