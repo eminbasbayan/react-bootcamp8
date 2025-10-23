@@ -4,7 +4,7 @@ import { CartContext } from '../../context/CartContext';
 import './ProductCard.css';
 
 function ProductCard(props) {
-  const { id, image, title, price, category, description } = props;
+  const { id, image, title, price, category, description, quantity } = props;
   const { onDeleteProduct, cart, onRemoveFromCart, ...product } = props;
   const { addToCart } = useContext(CartContext);
 
@@ -23,6 +23,7 @@ function ProductCard(props) {
       <div className="product-info">
         <strong className="product-title">{title}</strong>
         <span className="product-price">{price}₺</span>
+        {cart && <span className="product-price">x {quantity}</span>}
         <span className="product-category">{category}</span>
         <p className="product-description">{description}</p>
         {!cart && (
