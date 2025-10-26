@@ -1,34 +1,49 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
 
 export const CartContext = createContext();
 
+// Action types
+const ACTIONS = {
+  ADD_TO_CART: 'ADD_TO_CART',
+  REMOVE_FROM_CART: 'REMOVE_FROM_CART',
+};
+
+// Reducer function
+function cartReducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.ADD_TO_CART: {
+      const findProduct = state.find((item) => item.id === action.payload.id);
+
+      if (findProduct) {
+        return state.map((item) => {
+          if (findProduct.id === item.id) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+          return item;
+        });
+      } else {
+        return [{ ...action.payload, quantity: 1 }, ...state];
+      }
+    }
+
+    case ACTIONS.REMOVE_FROM_CART: {
+      return state.filter((item) => item.id !== action.payload);
+    }
+
+    default:
+      return state;
+  }
+}
+
 const CartProvider = (props) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, dispatch] = useReducer(cartReducer, []);
 
   function addToCart(product) {
-    const findProduct = cartItems.find((item) => item.id === product.id);
-
-    if (findProduct) {
-      const newCartItems = cartItems.map((item) => {
-        if (findProduct.id === item.id) {
-          return { ...item, quantity: item.quantity + 1 };
-        }
-
-        return item;
-      });
-
-      setCartItems(newCartItems);
-    } else {
-      setCartItems([{ ...product, quantity: 1 }, ...cartItems]);
-    }
+    dispatch({ type: ACTIONS.ADD_TO_CART, payload: product });
   }
 
   function removeFromCart(cartItemId) {
-    const filteredCartItems = cartItems.filter(
-      (item) => item.id !== cartItemId
-    );
-
-    setCartItems(filteredCartItems);
+    dispatch({ type: ACTIONS.REMOVE_FROM_CART, payload: cartItemId });
   }
 
   return (
