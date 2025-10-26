@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Layout/Header';
+import Counter from '../components/Counter';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -8,69 +9,113 @@ const HomePage = () => {
   const features = [
     {
       icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+        <svg
+          className="w-12 h-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+          />
         </svg>
       ),
       title: 'Ücretsiz Kargo',
-      description: 'Tüm siparişlerde ücretsiz ve hızlı teslimat'
+      description: 'Tüm siparişlerde ücretsiz ve hızlı teslimat',
     },
     {
       icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <svg
+          className="w-12 h-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+          />
         </svg>
       ),
       title: 'Güvenli Alışveriş',
-      description: 'SSL sertifikalı güvenli ödeme sistemi'
+      description: 'SSL sertifikalı güvenli ödeme sistemi',
     },
     {
       icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        <svg
+          className="w-12 h-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          />
         </svg>
       ),
       title: '14 Gün İade',
-      description: 'Koşulsuz 14 gün içinde iade garantisi'
+      description: 'Koşulsuz 14 gün içinde iade garantisi',
     },
     {
       icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        <svg
+          className="w-12 h-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+          />
         </svg>
       ),
       title: '7/24 Destek',
-      description: 'Her zaman yanınızda müşteri hizmetleri'
-    }
+      description: 'Her zaman yanınızda müşteri hizmetleri',
+    },
   ];
 
   const categories = [
     {
-      name: "Elektronik",
-      image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=500&fit=crop",
-      count: "120+ Ürün"
+      name: 'Elektronik',
+      image:
+        'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=500&fit=crop',
+      count: '120+ Ürün',
     },
     {
-      name: "Giyim",
-      image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=500&fit=crop",
-      count: "250+ Ürün"
+      name: 'Giyim',
+      image:
+        'https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=500&fit=crop',
+      count: '250+ Ürün',
     },
     {
-      name: "Aksesuar",
-      image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&h=500&fit=crop",
-      count: "180+ Ürün"
+      name: 'Aksesuar',
+      image:
+        'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&h=500&fit=crop',
+      count: '180+ Ürün',
     },
     {
-      name: "Ev & Yaşam",
-      image: "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&h=500&fit=crop",
-      count: "90+ Ürün"
-    }
+      name: 'Ev & Yaşam',
+      image:
+        'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&h=500&fit=crop',
+      count: '90+ Ürün',
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-
+      <Counter />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-teal-500 to-blue-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -82,8 +127,8 @@ const HomePage = () => {
                 <span className="block text-yellow-300">Yeni Adresi</span>
               </h1>
               <p className="text-xl text-gray-100 leading-relaxed">
-                En kaliteli ürünleri en uygun fiyatlarla keşfedin.
-                Binlerce ürün arasından size en uygun olanı bulun.
+                En kaliteli ürünleri en uygun fiyatlarla keşfedin. Binlerce ürün
+                arasından size en uygun olanı bulun.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
@@ -148,9 +193,7 @@ const HomePage = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">
-                  {feature.description}
-                </p>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -198,8 +241,8 @@ const HomePage = () => {
             Hemen Alışverişe Başlayın!
           </h2>
           <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-            Binlerce ürün arasından sizin için en uygun olanları seçin.
-            Güvenli ödeme, hızlı teslimat ve mükemmel müşteri hizmetiyle yanınızdayız.
+            Binlerce ürün arasından sizin için en uygun olanları seçin. Güvenli
+            ödeme, hızlı teslimat ve mükemmel müşteri hizmetiyle yanınızdayız.
           </p>
           <button
             onClick={() => navigate('/products')}
@@ -219,7 +262,8 @@ const HomePage = () => {
                 Kampanyalardan Haberdar Olun
               </h2>
               <p className="text-gray-300 text-lg">
-                E-bültene abone olun, özel fırsatları ve indirim kuponlarını kaçırmayın!
+                E-bültene abone olun, özel fırsatları ve indirim kuponlarını
+                kaçırmayın!
               </p>
             </div>
             <div>
@@ -259,17 +303,43 @@ const HomePage = () => {
             <div>
               <h4 className="text-white font-semibold mb-4">Hızlı Linkler</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="/products" className="hover:text-teal-400">Ürünler</a></li>
-                <li><a href="/about" className="hover:text-teal-400">Hakkımızda</a></li>
-                <li><a href="/contact" className="hover:text-teal-400">İletişim</a></li>
+                <li>
+                  <a href="/products" className="hover:text-teal-400">
+                    Ürünler
+                  </a>
+                </li>
+                <li>
+                  <a href="/about" className="hover:text-teal-400">
+                    Hakkımızda
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="hover:text-teal-400">
+                    İletişim
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Müşteri Hizmetleri</h4>
+              <h4 className="text-white font-semibold mb-4">
+                Müşteri Hizmetleri
+              </h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-teal-400">Sipariş Takibi</a></li>
-                <li><a href="#" className="hover:text-teal-400">İade & Değişim</a></li>
-                <li><a href="#" className="hover:text-teal-400">SSS</a></li>
+                <li>
+                  <a href="#" className="hover:text-teal-400">
+                    Sipariş Takibi
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-teal-400">
+                    İade & Değişim
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-teal-400">
+                    SSS
+                  </a>
+                </li>
               </ul>
             </div>
             <div>

@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@reduxjs/toolkit": "^2.9.2",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.65.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.4",
     "react-toastify": "^11.0.5",
     "yup": "^1.7.1"

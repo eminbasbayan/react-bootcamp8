@@ -1,38 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { arttir, azalt } from '../redux/counterSlice';
 
 function Counter() {
-  const [state, setState] = useState(0);
-  const [fullName, setFullName] = useState('Boş');
+  const value = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
 
-  console.log('render oldu!');
-
-  function arttir() {
-    setState(state + 1);
-  }
-
-  function azalt() {
-    setState(state - 1);
-  }
-
-  useEffect(() => {
-    console.log('component sadece ilk yüklendiği çalışır!');
-  }, []);
-
-  useEffect(() => {
-    console.log(
-      "component ilk yüklendiğinde ve depen. arr'e yazılan değerlere göre çalışır!"
-    );
-  }, [fullName, state]);
+  console.log(value.count);
 
   return (
-    <div className="counter">
-      <button onClick={arttir}>+</button>
-      <span>{state}</span>
-      <button onClick={azalt}>-</button>
-
-      <p>{fullName}</p>
-      <button onClick={() => setFullName('Emin Başbayan')}>
-        İsmi Değiştir
+    <div className="counter flex items-center gap-4">
+      <button className="p-2 bg-green-600" onClick={() => dispatch(arttir())}>
+        +
+      </button>
+      <span>{value.count}</span>
+      <button className="p-2 bg-red-600" onClick={() => dispatch(azalt())}>
+        -
       </button>
     </div>
   );
