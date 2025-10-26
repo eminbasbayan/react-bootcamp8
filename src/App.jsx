@@ -3,9 +3,9 @@ import { RouterProvider } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
-import Header from './components/Layout/Header';
 import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
+import { ToastContainer } from 'react-toastify';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +29,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="container mx-auto">
+      <ToastContainer />
       <RouterProvider router={router} />
     </div>
   );

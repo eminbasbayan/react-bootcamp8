@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react';
+import { toast } from 'react-toastify';
 
 export const CartContext = createContext();
 
@@ -40,6 +41,8 @@ const CartProvider = (props) => {
 
   function addToCart(product) {
     dispatch({ type: ACTIONS.ADD_TO_CART, payload: product });
+    // window.alert('Sepete Eklendi');
+    toast.success('Sepete Eklendi!');
   }
 
   function removeFromCart(cartItemId) {
