@@ -2,9 +2,12 @@ import { useContext } from 'react';
 import Header from '../components/Layout/Header';
 import { CartContext } from '../context/CartContext';
 import ProductCard from '../components/Products/ProductCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart } from '../redux/cartSlice';
 
 const CartPage = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const totalValue = cartItems.reduce((toplam, element) => {
     return element.price * element.quantity + toplam;
@@ -21,9 +24,7 @@ const CartPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Sepetim
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Sepetim</h1>
           <p className="text-gray-600">
             {cartItems.length > 0
               ? `Sepetinizde ${totalItems} adet ürün bulunuyor`
@@ -107,7 +108,9 @@ const CartPage = () => {
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm text-gray-500">Birim Fiyat:</span>
+                            <span className="text-sm text-gray-500">
+                              Birim Fiyat:
+                            </span>
                             <span className="text-gray-900 font-semibold">
                               {item.price.toFixed(2)} ₺
                             </span>
@@ -123,7 +126,7 @@ const CartPage = () => {
                           </div>
 
                           <button
-                            onClick={() => removeFromCart(item.id)}
+                            onClick={() => dispatch(removeFromCart(item.id))}
                             className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                             title="Sepetten Çıkar"
                           >
@@ -203,20 +206,44 @@ const CartPage = () => {
                 <div className="mt-6 pt-6 border-t border-gray-200">
                   <div className="space-y-3 text-sm text-gray-600">
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      <svg
+                        className="w-5 h-5 text-green-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                       <span>Güvenli Ödeme</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      <svg
+                        className="w-5 h-5 text-green-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                       <span>Ücretsiz Kargo</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      <svg
+                        className="w-5 h-5 text-green-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                       <span>14 Gün İade Garantisi</span>
                     </div>

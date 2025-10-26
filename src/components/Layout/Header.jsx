@@ -1,12 +1,10 @@
-import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CartContext } from '../../context/CartContext';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const navigate = useNavigate();
-  const value = useContext(CartContext);
-
-  
+  // const value = useContext(CartContext);
+  const value = useSelector((state) => state.cart);
 
   return (
     <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0">

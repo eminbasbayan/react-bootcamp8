@@ -1,12 +1,13 @@
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import Button from '../UI/Button';
-import { CartContext } from '../../context/CartContext';
+import { addToCart } from '../../redux/cartSlice';
 import './ProductCard.css';
 
 function ProductCard(props) {
   const { id, image, title, price, category, description, quantity } = props;
   const { onDeleteProduct, cart, onRemoveFromCart, ...product } = props;
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  // const { addToCart } = useContext(CartContext);
 
   function removeElement(elementId) {
     if (cart) {
@@ -29,7 +30,7 @@ function ProductCard(props) {
         {!cart && (
           <Button
             type="success"
-            onClick={() => addToCart(product)}
+            onClick={() => dispatch(addToCart(product))}
             addClass="mb-2"
           >
             Sepete Ekle
