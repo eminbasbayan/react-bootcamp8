@@ -1,11 +1,35 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearUser } from '../../redux/authSlice';
+import { signOut } from 'firebase/auth';
+import { auth as firebaseAuth } from '../../firebase';
+import { toast } from 'react-toastify';
 
 const Header = () => {
   const navigate = useNavigate();
   // const value = useContext(CartContext);
   const value = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  async function handleLogout() {
+    if (window.confirm('Çıkış yapmak istediğinize emin misiniz?')) {
+      try {
+        await signOut(firebaseAuth);
+        dispatch(clearUser());
+        toast(
+          'Başarıyla çıkış yapıldı. Login sayfasına yönlendiriliyorsunuz...'
+        );
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      } catch (error) {
+        console.error('Logout error:', error);
+      }
+    } else {
+      toast('Çıkış işlemi iptal edildi.');
+    }
+  }
 
   return (
     <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0 z-[99]">
@@ -51,6 +75,12 @@ const Header = () => {
               onClick={() => navigate('/profile')}
             >
               Profil: {auth.user.email}
+            </button>
+            <button
+              className="ml-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg"
+              onClick={handleLogout}
+            >
+              Çıkış Yap
             </button>
           </div>
         ) : (

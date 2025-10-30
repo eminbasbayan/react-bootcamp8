@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const schema = yup.object({
   email: yup
@@ -32,6 +33,13 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       navigate('/');
+      toast.success('Başarıyla giriş yapıldı! Ana sayfaya yönlendiriliyorsunuz...', {
+        position: 'top-right',
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
     } catch (error) {
       setError('email', { type: 'manual', message: error.message });
     }
