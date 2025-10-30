@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Layout/Header';
 import Counter from '../components/Counter';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -111,6 +113,12 @@ const HomePage = () => {
       count: '90+ Ürün',
     },
   ];
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user.providerData[0].email);
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
