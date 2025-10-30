@@ -21,7 +21,7 @@ const Header = () => {
           'Başarıyla çıkış yapıldı. Login sayfasına yönlendiriliyorsunuz...'
         );
         setTimeout(() => {
-          navigate('/login');
+          navigate('/auth/login');
         }, 2000);
       } catch (error) {
         console.error('Logout error:', error);
@@ -87,13 +87,13 @@ const Header = () => {
           <div className="auth">
             <button
               className="ml-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
-              onClick={() => navigate('/login')}
+              onClick={() => navigate('/auth/login')}
             >
               Giriş Yap
             </button>
             <button
               className="ml-4 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
-              onClick={() => navigate('/register')}
+              onClick={() => navigate('/auth/register')}
             >
               Kayıt Ol
             </button>

@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { initAuthListener } from './utils/authListener';
 import store from './redux/store';
 import MainLayout from './layouts/MainLayout';
+import AuthLayout from './layouts/AuthLayout';
 
 const router = createBrowserRouter([
   {
@@ -31,16 +32,22 @@ const router = createBrowserRouter([
         Component: CartPage,
       },
       {
-        path: '/register',
+        path: '*',
+        Component: NotFoundPage,
+      },
+    ],
+  },
+  {
+    path: '/auth',
+    Component: AuthLayout,
+    children: [
+      {
+        path: 'register',
         Component: RegisterPage,
       },
       {
-        path: '/login',
+        path: 'login',
         Component: LoginPage,
-      },
-      {
-        path: '*',
-        Component: NotFoundPage,
       },
     ],
   },
