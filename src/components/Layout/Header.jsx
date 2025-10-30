@@ -7,7 +7,7 @@ const Header = () => {
   const value = useSelector((state) => state.cart);
 
   return (
-    <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0">
+    <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0 z-[99]">
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Logo */}
         <div className="text-xl font-semibold">
