@@ -6,6 +6,7 @@ import ProductsPage from './pages/ProductsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
 import { ToastContainer } from 'react-toastify';
+import RegisterPage from './pages/RegisterPage';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/cart',
     Component: CartPage,
+  },
+    {
+    path: '/register',
+    Component: RegisterPage,
   },
   {
     path: '*',
