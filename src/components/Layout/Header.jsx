@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearUser } from '../../redux/authSlice';
 import { signOut } from 'firebase/auth';
@@ -41,18 +41,38 @@ const Header = () => {
 
         {/* Navigation Menüsü */}
         <nav className="space-x-6">
-          <Link to="/" className="hover:text-teal-400">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `hover:text-teal-400 ${isActive ? 'text-teal-400' : ''}`
+            }
+          >
             Home
-          </Link>
-          <Link to="/products" className="hover:text-teal-400">
+          </NavLink>
+          <NavLink
+            to="/products"
+            className={({ isActive }) =>
+              `hover:text-teal-400 ${isActive ? 'text-teal-400' : ''}`
+            }
+          >
             Products
-          </Link>
-          <Link to="/about" className="hover:text-teal-400">
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `hover:text-teal-400 ${isActive ? 'text-teal-400' : ''}`
+            }
+          >
             About
-          </Link>
-          <Link to="/contact" className="hover:text-teal-400">
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `hover:text-teal-400 ${isActive ? 'text-teal-400' : ''}`
+            }
+          >
             Contact
-          </Link>
+          </NavLink>
         </nav>
 
         {/* Sepet Butonu */}
