@@ -5,6 +5,7 @@ const Header = () => {
   const navigate = useNavigate();
   // const value = useContext(CartContext);
   const value = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
 
   return (
     <header className="bg-gray-800 text-white shadow-md py-4 sticky top-0 z-[99]">
@@ -42,6 +43,32 @@ const Header = () => {
             </span>
           </button>
         </div>
+
+        {auth.user ? (
+          <div className="profile">
+            <button
+              className="ml-4 bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-lg"
+              onClick={() => navigate('/profile')}
+            >
+              Profil: {auth.user.email}
+            </button>
+          </div>
+        ) : (
+          <div className="auth">
+            <button
+              className="ml-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
+              onClick={() => navigate('/login')}
+            >
+              Giriş Yap
+            </button>
+            <button
+              className="ml-4 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
+              onClick={() => navigate('/register')}
+            >
+              Kayıt Ol
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );

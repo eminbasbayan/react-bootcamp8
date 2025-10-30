@@ -8,6 +8,9 @@ import CartPage from './pages/CartPage';
 import { ToastContainer } from 'react-toastify';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import { useEffect } from 'react';
+import { initAuthListener } from './utils/authListener';
+import store from './redux/store';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +25,7 @@ const router = createBrowserRouter([
     path: '/cart',
     Component: CartPage,
   },
-    {
+  {
     path: '/register',
     Component: RegisterPage,
   },
@@ -37,6 +40,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  
+  useEffect(() => {
+    initAuthListener(store);
+  }, []);
+
   return (
     <div className="container mx-auto">
       <ToastContainer />
