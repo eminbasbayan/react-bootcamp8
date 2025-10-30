@@ -11,36 +11,42 @@ import LoginPage from './pages/LoginPage';
 import { useEffect } from 'react';
 import { initAuthListener } from './utils/authListener';
 import store from './redux/store';
+import MainLayout from './layouts/MainLayout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    Component: HomePage,
-  },
-  {
-    path: '/products',
-    Component: ProductsPage,
-  },
-  {
-    path: '/cart',
-    Component: CartPage,
-  },
-  {
-    path: '/register',
-    Component: RegisterPage,
-  },
-  {
-    path: '/login',
-    Component: LoginPage,
-  },
-  {
-    path: '*',
-    Component: NotFoundPage,
+    Component: MainLayout,
+    children: [
+      {
+        path: '/',
+        Component: HomePage,
+      },
+      {
+        path: '/products',
+        Component: ProductsPage,
+      },
+      {
+        path: '/cart',
+        Component: CartPage,
+      },
+      {
+        path: '/register',
+        Component: RegisterPage,
+      },
+      {
+        path: '/login',
+        Component: LoginPage,
+      },
+      {
+        path: '*',
+        Component: NotFoundPage,
+      },
+    ],
   },
 ]);
 
 function App() {
-  
   useEffect(() => {
     initAuthListener(store);
   }, []);

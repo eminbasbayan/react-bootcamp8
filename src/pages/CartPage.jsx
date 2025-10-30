@@ -1,7 +1,3 @@
-import { useContext } from 'react';
-import Header from '../components/Layout/Header';
-import { CartContext } from '../context/CartContext';
-import ProductCard from '../components/Products/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../redux/cartSlice';
 
@@ -19,8 +15,6 @@ const CartPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <Header />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Page Header */}
         <div className="mb-8">

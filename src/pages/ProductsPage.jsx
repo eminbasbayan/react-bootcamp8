@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Header from '../components/Layout/Header';
 import Products from '../components/Products/Products';
 
 const ProductsPage = () => {
@@ -16,15 +15,11 @@ const ProductsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <Header />
-
       {/* Page Header */}
       <div className="bg-gradient-to-r from-teal-500 to-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <h1 className="text-5xl font-bold mb-4">
-              Ürünlerimizi Keşfedin
-            </h1>
+            <h1 className="text-5xl font-bold mb-4">Ürünlerimizi Keşfedin</h1>
             <p className="text-xl text-gray-100 max-w-2xl mx-auto">
               Binlerce kaliteli ürün arasından size en uygun olanı bulun
             </p>
@@ -111,7 +106,9 @@ const ProductsPage = () => {
               {/* Active Filters Display */}
               {(searchTerm || selectedCategory !== 'all') && (
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="text-sm text-gray-600">Aktif Filtreler:</span>
+                  <span className="text-sm text-gray-600">
+                    Aktif Filtreler:
+                  </span>
                   {searchTerm && (
                     <span className="inline-flex items-center gap-1 bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">
                       Arama: {searchTerm}
@@ -119,21 +116,45 @@ const ProductsPage = () => {
                         onClick={() => setSearchTerm('')}
                         className="hover:bg-teal-200 rounded-full p-0.5"
                       >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
                         </svg>
                       </button>
                     </span>
                   )}
                   {selectedCategory !== 'all' && (
                     <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                      Kategori: {categories.find(c => c.value === selectedCategory)?.label}
+                      Kategori:{' '}
+                      {
+                        categories.find((c) => c.value === selectedCategory)
+                          ?.label
+                      }
                       <button
                         onClick={() => setSelectedCategory('all')}
                         className="hover:bg-blue-200 rounded-full p-0.5"
                       >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
                         </svg>
                       </button>
                     </span>
@@ -160,8 +181,18 @@ const ProductsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition-shadow">
             <div className="bg-teal-100 text-teal-600 p-4 rounded-lg">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
             </div>
             <div>
@@ -172,8 +203,18 @@ const ProductsPage = () => {
 
           <div className="bg-white rounded-xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition-shadow">
             <div className="bg-blue-100 text-blue-600 p-4 rounded-lg">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
             </div>
             <div>
@@ -184,8 +225,18 @@ const ProductsPage = () => {
 
           <div className="bg-white rounded-xl shadow-md p-6 flex items-center gap-4 hover:shadow-lg transition-shadow">
             <div className="bg-green-100 text-green-600 p-4 rounded-lg">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
               </svg>
             </div>
             <div>
@@ -197,7 +248,10 @@ const ProductsPage = () => {
 
         {/* Products Component */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <Products searchTerm={searchTerm} selectedCategory={selectedCategory} />
+          <Products
+            searchTerm={searchTerm}
+            selectedCategory={selectedCategory}
+          />
         </div>
       </div>
     </div>

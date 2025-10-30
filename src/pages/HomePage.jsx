@@ -1,6 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Layout/Header';
-import Counter from '../components/Counter';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -115,8 +113,6 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-      <Counter />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-teal-500 to-blue-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
