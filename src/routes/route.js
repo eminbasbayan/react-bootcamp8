@@ -7,6 +7,9 @@ import NotFoundPage from '../pages/NotFoundPage';
 import AuthLayout from '../layouts/AuthLayout';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
+import AdminLayout from '../layouts/AdminLayout';
+import Dashboard from '../pages/Admin/Dashboard';
+import ProductManagement from '../pages/Admin/ProductManagement';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +45,20 @@ const router = createBrowserRouter([
       {
         path: 'login',
         Component: LoginPage,
+      },
+    ],
+  },
+  {
+    path: '/admin',
+    Component: AdminLayout,
+    children: [
+      {
+        path: '',
+        Component: Dashboard,
+      },
+      {
+        path: 'products',
+        Component: ProductManagement,
       },
     ],
   },
