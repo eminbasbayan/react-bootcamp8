@@ -10,6 +10,7 @@ import LoginPage from '../pages/LoginPage';
 import AdminLayout from '../layouts/AdminLayout';
 import Dashboard from '../pages/Admin/Dashboard';
 import ProductManagement from '../pages/Admin/ProductManagement';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    Component: AdminLayout,
+    element: (
+      <ProtectedRoute requiredRole="admin">
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: '',
@@ -65,4 +70,4 @@ const router = createBrowserRouter([
 ]);
 
 
-export default router
+export default router;

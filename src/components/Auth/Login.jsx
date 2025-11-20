@@ -2,9 +2,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { doc, getDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/authSlice';
 
 const schema = yup.object({
   email: yup
@@ -28,20 +31,61 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     try {
-      await signInWithEmailAndPassword(auth, data.email, data.password);
-      navigate('/');
-      toast.success('Başarıyla giriş yapıldı! Ana sayfaya yönlendiriliyorsunuz...', {
-        position: 'top-right',
-        autoClose: 2000,
-      });
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
+      // Firebase Auth ile giriş yap
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      // Firestore'dan kullanıcı bilgilerini çek
+      const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
+
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+
+        // Redux'a kullanıcı bilgilerini kaydet
+        dispatch(
+          setUser({
+            uid: userCredential.user.uid,
+            email: userData.email,
+            fullName: userData.fullName,
+            role: userData.role,
+          })
+        );
+
+        toast.success('Başarıyla giriş yapıldı!', {
+          position: 'top-right',
+          autoClose: 1500,
+        });
+
+        // Role'e göre yönlendir
+        setTimeout(() => {
+          if (userData.role === 'admin') {
+            navigate('/admin');
+          } else {
+            navigate('/');
+          }
+        }, 1500);
+      } else {
+        throw new Error('Kullanıcı bilgileri bulunamadı');
+      }
     } catch (error) {
-      setError('email', { type: 'manual', message: error.message });
+      console.error('Login error:', error);
+      const errorMessage =
+        error.code === 'auth/invalid-credential'
+          ? 'Email veya şifre hatalı'
+          : error.code === 'auth/user-not-found'
+          ? 'Kullanıcı bulunamadı'
+          : error.code === 'auth/wrong-password'
+          ? 'Şifre hatalı'
+          : error.message;
+      setError('email', { type: 'manual', message: errorMessage });
+      toast.error(errorMessage);
     }
   };
 

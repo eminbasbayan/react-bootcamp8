@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const AdminSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const auth = useSelector((state) => state.auth);
 
   const navLinkClass = ({ isActive }) =>
     `flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
@@ -110,15 +112,15 @@ const AdminSidebar = () => {
       </nav>
 
       {/* Footer */}
-      {!isCollapsed && (
+      {!isCollapsed && auth.user && (
         <div className="p-4 border-t border-gray-700">
           <div className="flex items-center space-x-3 text-sm text-gray-400">
             <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center font-bold text-white">
-              A
+              {auth.user.fullName?.charAt(0).toUpperCase() || 'A'}
             </div>
             <div>
-              <p className="font-medium text-white">Admin User</p>
-              <p className="text-xs">admin@shop.com</p>
+              <p className="font-medium text-white">{auth.user.fullName || 'Admin'}</p>
+              <p className="text-xs">{auth.user.email}</p>
             </div>
           </div>
         </div>

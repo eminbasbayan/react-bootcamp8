@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: null,
-  loading: false,
+  user: null, // { uid, email, fullName, role }
+  loading: true, // Başlangıçta true - auth kontrolü yapılana kadar bekle
 };
 
 const authSlice = createSlice({
@@ -17,8 +17,11 @@ const authSlice = createSlice({
       state.user = null;
       state.loading = false;
     },
+    setLoading(state, action) {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { setUser, clearUser } = authSlice.actions;
+export const { setUser, clearUser, setLoading } = authSlice.actions;
 export default authSlice;
